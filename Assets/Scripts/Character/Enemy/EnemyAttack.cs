@@ -31,7 +31,7 @@ public class EnemyAttack : MonoBehaviour
     /// Ons the trigger enter.
     /// </summary>
     /// <param name="other">Other.</param>
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         // If the entering collider is the player...
         if (other.gameObject == player)
@@ -45,7 +45,7 @@ public class EnemyAttack : MonoBehaviour
     /// Ons the trigger exit.
     /// </summary>
     /// <param name="other">Other.</param>
-    void OnTriggerExit(Collider other)
+    void OnCollisionExit2D(Collision2D other)
     {
         // If the exiting collider is the player...
         if (other.gameObject == player)
@@ -64,7 +64,7 @@ public class EnemyAttack : MonoBehaviour
         timer += Time.deltaTime;
 
         // If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
-        if (timer >= timeBetweenAttacks && playerInRange && enemyHealth.currentHealth > 0)
+        if (timer >= timeBetweenAttacks && playerInRange)// && enemyHealth.currentHealth > 0)
         {
             // ... attack.
             Attack();

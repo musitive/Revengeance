@@ -40,6 +40,7 @@ public class PlayerHealth : MonoBehaviour
     /// </summary>
     void Update()
     {
+
         // If the player has just been damaged...
         if (damaged)
         {
@@ -63,6 +64,7 @@ public class PlayerHealth : MonoBehaviour
     /// <param name="amount">Amount.</param>
     public void TakeDamage(int amount)
     {
+        Debug.Log("TakeDamage");
         // Set the damaged flag so the screen will flash.
         damaged = true;
 
@@ -70,15 +72,17 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
 
         // Set the health bar's value to the current health.
-        healthSlider.value = currentHealth;
+        //healthSlider.value = currentHealth;
 
         // Play the hurt sound effect.
+        playerAudio.clip = deathClip;
         playerAudio.Play();
 
         // If the player has lost all it's health and the death flag hasn't been set yet...
         if (currentHealth <= 0 && !isDead)
         {
             // ... it should die.
+            Debug.Log("YOU DIED");
             Death();
         }
     }

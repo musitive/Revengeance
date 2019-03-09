@@ -31,13 +31,7 @@ public class Octopus : MonoBehaviour
             horizontalMove = 0;
             return;
         }
-        onRightSide = player.localPosition.x < self.localPosition.x;
-        float bestSpot = player.localPosition.x + bestDistance * (onRightSide?1:-1);
-        if (Mathf.Abs(bestSpot - self.localPosition.x) < bestDistanceLeniency)
-        {
-            horizontalMove = 0;
-        }
-        else if (bestSpot < self.localPosition.x)
+        if (player.localPosition.x < self.localPosition.x)
         {
             horizontalMove = -1 * runSpeed;
         }
