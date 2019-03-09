@@ -10,13 +10,17 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 40f;
     bool jump = false;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start this instance.  Start is called before the first frame update.
+    /// </summary>
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update this instance.  Update is called once per frame.
+    /// </summary>
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -27,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fixeds the update.
+    /// </summary>
     void FixedUpdate()
     {
         //fixedDeltaTime assures same speed no matter how frequent this function is called
