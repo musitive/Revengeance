@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
     }
 
+    /// <summary>
+    /// Fixeds the update.
+    /// </summary>
     void FixedUpdate()
     {
         //fixedDeltaTime assures same speed no matter how frequent this function is called

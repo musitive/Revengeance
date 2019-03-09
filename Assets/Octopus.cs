@@ -21,7 +21,10 @@ public class Octopus : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+
+    /// <summary>
+    /// Update this instance.  Update is called once per frame.
+    /// </summary>
     void Update()
     {
         if (Mathf.Abs(player.localPosition.x - self.localPosition.x) > sightDistance){
@@ -44,6 +47,9 @@ public class Octopus : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fixeds the update.
+    /// </summary>
     void FixedUpdate()
     {
         //fixedDeltaTime assures same speed no matter how frequent this function is called
