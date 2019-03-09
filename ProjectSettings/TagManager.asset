@@ -14,12 +14,12 @@ TagManager:
   - UI
   - 
   - 
-  - BlockingLayer
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Background
+  - Foreground
+  - Character
+  - Enemies
+  - FX
+  - Camera
   - 
   - 
   - 
