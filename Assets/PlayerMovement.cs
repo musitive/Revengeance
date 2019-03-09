@@ -9,13 +9,17 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
     public float runSpeed = 40f;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start this instance.  Start is called before the first frame update.
+    /// </summary>
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update this instance.  Update is called once per frame.
+    /// </summary>
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
