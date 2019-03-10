@@ -5,11 +5,11 @@ using System.Collections;
 public class EnemyAttack : MonoBehaviour
 {
     public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
-    public int attackDamage = 10;               // The amount of health taken away per attack.
-
+    public int attackDamage = 1;               // The amount of health taken away per attack.
+    public Octopus octopus;
+    public GameObject player;
 
     Animator anim;                              // Reference to the animator component.
-    GameObject player;                          // Reference to the player GameObject.
     PlayerHealth playerHealth;                  // Reference to the player's health.
     //EnemyHealth enemyHealth;                    // Reference to this enemy's health.
     bool playerInRange;                         // Whether player is within the trigger collider and can be attacked.
@@ -21,7 +21,6 @@ public class EnemyAttack : MonoBehaviour
     void Awake()
     {
         // Setting up the references.
-        player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
         //enemyHealth = GetComponent<EnemyHealth>();
         anim = GetComponent<Animator>();
@@ -34,11 +33,7 @@ public class EnemyAttack : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         // If the entering collider is the player...
-        if (other.gameObject == player)
-        {
-            // ... the player is in range.
-            playerInRange = true;
-        }
+        playerInRange |= other.gameObject == player;
     }
 
     /// <summary>
@@ -48,11 +43,7 @@ public class EnemyAttack : MonoBehaviour
     void OnCollisionExit2D(Collision2D other)
     {
         // If the exiting collider is the player...
-        if (other.gameObject == player)
-        {
-            // ... the player is no longer in range.
-            playerInRange = false;
-        }
+        playerInRange &= other.gameObject != player;
     }
 
     /// <summary>
@@ -89,8 +80,9 @@ public class EnemyAttack : MonoBehaviour
         // If the player has health to lose...
         if (playerHealth.currentHealth > 0)
         {
+            int direction = (player.transform.localPosition.x > octopus.self.localPosition.x) ? 1: -1;
             // ... damage the player.
-            playerHealth.TakeDamage(attackDamage);
+            playerHealth.TakeDamage(attackDamage, direction);
         }
     }
 }

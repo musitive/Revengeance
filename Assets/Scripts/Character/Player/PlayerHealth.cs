@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int startingHealth = 100;                            // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
-    public Slider healthSlider;                                 // Reference to the UI's health bar.
+    public HealthBar healthBar;                                 // Reference to the UI's health bar.
     public Image damageImage;                                   // Reference to an image to flash on the screen on being hurt.
     public AudioClip deathClip;                                 // The audio clip to play when the player dies.
     public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
@@ -62,7 +62,7 @@ public class PlayerHealth : MonoBehaviour
     /// Takes the damage.
     /// </summary>
     /// <param name="amount">Amount.</param>
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount, int direction)
     {
         Debug.Log("TakeDamage");
         // Set the damaged flag so the screen will flash.
@@ -72,7 +72,10 @@ public class PlayerHealth : MonoBehaviour
         currentHealth -= amount;
 
         // Set the health bar's value to the current health.
-        //healthSlider.value = currentHealth;
+        healthBar.DisplayHealthBars(currentHealth);
+
+        // Player Recoil
+        playerMovement.controller.Move(direction * 50, false, false, true);
 
         // Play the hurt sound effect.
         playerAudio.clip = deathClip;

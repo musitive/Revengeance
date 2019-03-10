@@ -19,21 +19,13 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        testHealthBarInputKeys();
-        retrievePlayerHealth();
-        healthBounds();
-        displayHealthBars();
-    }
-
-    //dependent on player health
-    //updates UI health to match player health
-    void retrievePlayerHealth()
-    {
-        //TODO
+        TestHealthBarInputKeys();
+        HealthBounds();
+        DisplayHealthBars(health);
     }
 
     //enforces lower and upper limits of health
-    void healthBounds()
+    void HealthBounds()
     {
         if(health < 0)
             health = 0;
@@ -42,22 +34,24 @@ public class HealthBar : MonoBehaviour
     }
 
     //displays health bars based on percent health remaining (later ones disappear first)
-    void displayHealthBars()
+    public void DisplayHealthBars(int h)
     {
-        for(int i = 0; i < healthBar.Length; i++)
+        health = h;
+        for(int i = 0; i < h; i++)
         {
-            float percent = (float)(i) / healthBar.Length;
-            if(health <= maxHealth * percent)
-                healthBar[i].enabled = false;
-            else
-                healthBar[i].enabled = true;
+            healthBar[i].enabled = true;
+        }
+
+        for(int i = h; i < healthBar.Length; i++)
+        {
+            healthBar[i].enabled = false;
         }
     }
 
     //testing
     //adds health equal to number key pressed ("0" = 10) or subtracts if pressing left alt
     //affects max health if pressing left shift
-    void testHealthBarInputKeys()
+    void TestHealthBarInputKeys()
     {
         int healthMod = -1;
         if(Input.GetKey("left alt"))
