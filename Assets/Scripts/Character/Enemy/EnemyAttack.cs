@@ -6,8 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     public float timeBetweenAttacks = 0.5f;     // The time in seconds between each attack.
     public int attackDamage = 1;               // The amount of health taken away per attack.
-    public Octopus octopus;
-    public GameObject player;
+    private GameObject player;
 
     Animator anim;                              // Reference to the animator component.
     PlayerHealth playerHealth;                  // Reference to the player's health.
@@ -20,6 +19,7 @@ public class EnemyAttack : MonoBehaviour
     /// </summary>
     void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         // Setting up the references.
         playerHealth = player.GetComponent<PlayerHealth>();
         //enemyHealth = GetComponent<EnemyHealth>();
@@ -80,7 +80,7 @@ public class EnemyAttack : MonoBehaviour
         // If the player has health to lose...
         if (playerHealth.currentHealth > 0)
         {
-            int direction = (player.transform.localPosition.x > octopus.self.localPosition.x) ? 1: -1;
+            int direction = (player.transform.localPosition.x > transform.localPosition.x) ? 1: -1;
             // ... damage the player.
             playerHealth.TakeDamage(attackDamage, direction);
         }

@@ -5,14 +5,10 @@ using UnityEngine;
 public class Octopus : MonoBehaviour
 {
     public CharacterController2D controller;
-    public Transform player;
-    public Transform self;
+    private Transform player;
 
     float horizontalMove = 30f;
-    public float runSpeed = 600f;
-    float bestDistance = 4f; // the distance we want to be from the player.
-    float bestDistanceLeniency = .6f;
-    bool onRightSide = false;
+    public float runSpeed = 30f;
     float sightDistance = 10; //beyond this the enemy cannot see the player
 
     // Start is called before the first frame update
@@ -27,11 +23,12 @@ public class Octopus : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (Mathf.Abs(player.localPosition.x - self.localPosition.x) > sightDistance){
+        if (Vector3.Distance(transform.position, player.position) > sightDistance)
+        {
             horizontalMove = 0;
             return;
         }
-        if (player.localPosition.x < self.localPosition.x)
+        if (player.localPosition.x < transform.localPosition.x)
         {
             horizontalMove = -1 * runSpeed;
         }
