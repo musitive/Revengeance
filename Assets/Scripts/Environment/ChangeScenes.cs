@@ -7,6 +7,7 @@ public class ChangeScenes : MonoBehaviour
 {
     public GameObject dont_destroy;
     public static bool im_the_first = true;
+
     // Start is called before the first frame update
     void Start()
     {
