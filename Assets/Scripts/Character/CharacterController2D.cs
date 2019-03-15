@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Character controller2D.  Source: Brackeys
+///                          Documentation: Dallin Frank
+/// </summary>
 public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
@@ -30,6 +34,9 @@ public class CharacterController2D : MonoBehaviour
     public BoolEvent OnCrouchEvent;
     private bool m_wasCrouching = false;
 
+    /// <summary>
+    /// Awake this instance.
+    /// </summary>
     private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -41,6 +48,9 @@ public class CharacterController2D : MonoBehaviour
             OnCrouchEvent = new BoolEvent();
     }
 
+    /// <summary>
+    /// Fixeds the update.
+    /// </summary>
     private void FixedUpdate()
     {
         bool wasGrounded = m_Grounded;
@@ -60,17 +70,19 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-
-    public void Move(float move, bool crouch, bool jump)
+    /// <summary>
+    /// Move the character.
+    /// </summary>
+    /// <param name="move">Move.</param>
+    /// <param name="crouch">If set to <c>true</c> crouch.</param>
+    /// <param name="jump">If set to <c>true</c> jump.</param>
+    public void Move(float move, bool crouch, bool jump, bool damaged = false)
     {
         // If crouching, check to see if the character can stand up
         if (!crouch)
         {
             // If the character has a ceiling preventing them from standing up, keep them crouching
-            if (Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround))
-            {
-                crouch = true;
-            }
+            crouch |= Physics2D.OverlapCircle(m_CeilingCheck.position, k_CeilingRadius, m_WhatIsGround);
         }
 
         //only control the player if grounded or airControl is turned on
@@ -133,7 +145,9 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Flip this instance.
+    /// </summary>
     private void Flip()
     {
         // Switch the way the player is labelled as facing.
