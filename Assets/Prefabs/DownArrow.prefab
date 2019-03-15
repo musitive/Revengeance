@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7268298199230053722}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.5, y: 1.5, z: 0}
   m_LocalScale: {x: 6.5, y: 6.5, z: 1}
   m_Children: []
@@ -119,5 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c02ab662be822940bcb2653a04395e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fall_speed: 1.5
+  fall_speed: 4.5
   fall_delay: 0.1
+  max_time_active_until_destroyed: 5
