@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SwitchingSceneTest.unity
     guid: f01f4f936d27ba8449911a8a9f6d21f0
+  - enabled: 1
+    path: Assets/Scenes/MichaelLevel1.unity
+    guid: 67a542b53c3e0764f9bb8b20803740e3
+  - enabled: 1
+    path: Assets/Scenes/MichaelLevel2.unity
+    guid: c636e6f2e4bee85408c23b6cb8fb2df1
   m_configObjects: {}
