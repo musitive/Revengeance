@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Octopus : MonoBehaviour
+public class Roamer : MonoBehaviour
 {
     public CharacterController2D controller;
-    private Transform player;
+    private Vector3 startingPosition;
 
     float horizontalMove = 30f;
-    public float runSpeed = 30f;
-    float sightDistance = 10; //beyond this the enemy cannot see the player
+    public float runSpeed = 10f;
+    public float walkingDistance = 2f;
+    bool walkingRight = true;
+    bool jump = false;//currently not used, but can be in the future
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        startingPosition = transform.position;
     }
 
 
@@ -23,18 +25,21 @@ public class Octopus : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.position) > sightDistance)
-        {
-            horizontalMove = 0;
-            return;
-        }
-        if (player.localPosition.x < transform.localPosition.x)
+        if (walkingRight)
         {
             horizontalMove = -1 * runSpeed;
         }
         else
         {
             horizontalMove = runSpeed;
+        }
+        if (!walkingRight && transform.position.x - startingPosition.x > walkingDistance)
+        {
+            walkingRight = true;
+        }
+        else if (walkingRight && startingPosition.x - transform.position.x > walkingDistance)
+        {
+            walkingRight = false;
         }
     }
 
@@ -44,6 +49,6 @@ public class Octopus : MonoBehaviour
     void FixedUpdate()
     {
         //fixedDeltaTime assures same speed no matter how frequent this function is called
-        controller.Move(horizontalMove * Time.fixedDeltaTime, false, false);// crouch and jump
+        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);// crouch and jump
     }
 }
