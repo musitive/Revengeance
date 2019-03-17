@@ -225,6 +225,16 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3364218096787538903, guid: 71cea01814b6f465bb82f0a6d3897699,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364218096787538900, guid: 71cea01814b6f465bb82f0a6d3897699,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3364218096787538888, guid: 71cea01814b6f465bb82f0a6d3897699,
         type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
@@ -279,16 +289,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 0.2758
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364218096787538903, guid: 71cea01814b6f465bb82f0a6d3897699,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3364218096787538900, guid: 71cea01814b6f465bb82f0a6d3897699,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71cea01814b6f465bb82f0a6d3897699, type: 3}
@@ -364,6 +364,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 12798222}
   runSpeed: 30
+--- !u!70 &12798224
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12798219}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.017771829, y: -0.013253977}
+  m_Size: {x: 0.19386469, y: 0.26286736}
+  m_Direction: 1
 --- !u!1 &71358078
 GameObject:
   m_ObjectHideFlags: 0
