@@ -16,13 +16,13 @@ public class HealthBar : MonoBehaviour
         health = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        TestHealthBarInputKeys();
-        HealthBounds();
-        DisplayHealthBars(health);
-    }
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    TestHealthBarInputKeys();
+    //    HealthBounds();
+    //    DisplayHealthBars(health);
+    //}
 
     //enforces lower and upper limits of health
     void HealthBounds()
