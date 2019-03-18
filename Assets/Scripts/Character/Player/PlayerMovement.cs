@@ -33,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
             jump = true;
             animator.SetBool("IsJumping", true);
         }
+        //if(Input.GetMouseButtonDown("Fire1"))
+        //{
+        //    animator.SetBool("Attacking", true);
+        //}
 
         animator.SetBool("IsGrounded", controller.m_Grounded);
     }
@@ -46,5 +50,6 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);// crouch and jump
         jump = false;
         animator.SetBool("IsJumping", false);
+        animator.SetBool("Attacking", false);
     }
 }
