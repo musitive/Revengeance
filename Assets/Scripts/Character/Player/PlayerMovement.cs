@@ -31,12 +31,12 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump"))
         {
             jump = true;
-            animator.SetBool("IsJumping", true);
+            animator.SetTrigger("Jump");
         }
-        //if(Input.GetMouseButtonDown("Fire1"))
-        //{
-        //    animator.SetBool("Attacking", true);
-        //}
+        if(Input.GetButtonDown("Attack"))
+        {
+            animator.SetTrigger("Attack");
+        }
 
         animator.SetBool("IsGrounded", controller.m_Grounded);
     }
@@ -49,7 +49,5 @@ public class PlayerMovement : MonoBehaviour
         //fixedDeltaTime assures same speed no matter how frequent this function is called
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);// crouch and jump
         jump = false;
-        animator.SetBool("IsJumping", false);
-        animator.SetBool("Attacking", false);
     }
 }
