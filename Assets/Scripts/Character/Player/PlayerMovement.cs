@@ -33,10 +33,6 @@ public class PlayerMovement : MonoBehaviour
             jump = true;
             animator.SetTrigger("Jump");
         }
-        if(Input.GetButtonDown("Attack"))
-        {
-            animator.SetTrigger("Attack");
-        }
 
         animator.SetBool("IsGrounded", controller.m_Grounded);
     }
