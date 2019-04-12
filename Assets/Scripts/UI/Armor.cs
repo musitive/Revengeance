@@ -52,6 +52,16 @@ public class Armor : MonoBehaviour
         }
     }
 
+    void incrementLevel()
+    {
+        level++;
+    }
+
+    void decrementLevel()
+    {
+        level--;
+    }
+
     //testing
     //changes level with -/+ on keypad if pressing right ctrl
     void testNumberInputKeys()
