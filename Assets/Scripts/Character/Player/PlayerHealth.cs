@@ -4,6 +4,7 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public Score score;
     public int startingHealth = 100;                            // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
     public HealthBar healthBar;                                 // Reference to the UI's health bar.
@@ -11,6 +12,12 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip deathClip;                                 // The audio clip to play when the player dies.
     public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);     // The colour the damageImage is set to, to flash.
+    private Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
 
     Animator anim;                                              // Reference to the Animator component.
@@ -111,5 +118,19 @@ public class PlayerHealth : MonoBehaviour
         // Turn off the movement and shooting scripts.
         playerMovement.enabled = false;
         //playerShooting.enabled = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Heart"))
+        {
+            other.gameObject.SetActive(false);
+            currentHealth = currentHealth >= 10 ? 10 : currentHealth + 1;
+        }
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            other.gameObject.SetActive(false);
+            Score.currentScore += 50;
+        }
     }
 }

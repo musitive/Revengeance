@@ -7,11 +7,11 @@ public class EnemyHealth : MonoBehaviour
     public float sinkSpeed = 2.5f;              // The speed at which the enemy sinks through the floor when dead.
     //public float scoreValue = 10;
     public AudioClip deathClip;                 // The sound to play when the enemy dies.
-
+   
     Animator animator;                              // Reference to the animator.
     AudioSource enemyAudio;                     // Reference to the audio source.
     ParticleSystem hitParticles;                // Reference to the particle system that plays when the enemy is damaged.
-    CapsuleCollider capsuleCollider;            // Reference to the capsule collider.
+    BoxCollider2D capsuleCollider;            // Reference to the capsule collider.
     bool isDead;                                // Whether the enemy is dead.
     bool isSinking;                             // Whether the enemy has started sinking through the floor.
 
@@ -22,8 +22,7 @@ public class EnemyHealth : MonoBehaviour
         animator = GetComponent <Animator> ();
         enemyAudio = GetComponent <AudioSource> ();
         hitParticles = GetComponentInChildren <ParticleSystem> ();
-        capsuleCollider = GetComponent <CapsuleCollider> ();
-
+        capsuleCollider = GetComponent<BoxCollider2D>();
         // Setting the current health when the enemy first spawns.
         currentHealth = startingHealth;
     }
@@ -39,7 +38,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
 
-    public void TakeDamage (int amount, Vector3 hitPoint)
+    public void TakeDamage (int amount)
     {
         // If the enemy is dead...
         if(isDead)
@@ -52,11 +51,11 @@ public class EnemyHealth : MonoBehaviour
         // Reduce the current health by the amount of damage sustained.
         currentHealth -= amount;
             
-        // Set the position of the particle system to where the hit was sustained.
-        hitParticles.transform.position = hitPoint;
+        //// Set the position of the particle system to where the hit was sustained.
+        //hitParticles.transform.position = hitPoint;
 
-        // And play the particles.
-        hitParticles.Play();
+        //// And play the particles.
+        //hitParticles.Play();
 
         // If the current health is less than or equal to zero...
         if(currentHealth <= 0)
@@ -81,6 +80,10 @@ public class EnemyHealth : MonoBehaviour
         // Change the audio clip of the audio source to the death clip and play it (this will stop the hurt clip playing).
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();
+
+        StartSinking();
+
+        Score.gainPoints(startingHealth * 100);
     }
 
 
@@ -90,7 +93,7 @@ public class EnemyHealth : MonoBehaviour
         //GetComponent <NavMeshAgent> ().enabled = false;
 
         // Find the rigidbody component and make it kinematic (since we use Translate to sink the enemy).
-        GetComponent <Rigidbody> ().isKinematic = true;
+        GetComponent <Rigidbody2D> ().isKinematic = true;
 
         // The enemy should no sink.
         isSinking = true;
@@ -99,6 +102,6 @@ public class EnemyHealth : MonoBehaviour
         //ScoreManager.score += scoreValue;
 
         // After 2 seconds destroy the enemy.
-        Destroy (gameObject, 2f);
+        Destroy (gameObject, .25f);
     }
 }
