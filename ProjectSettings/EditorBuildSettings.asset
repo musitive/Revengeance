@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MichaelLevel2.unity
     guid: c636e6f2e4bee85408c23b6cb8fb2df1
+  - enabled: 1
+    path: Assets/Scenes/Lance.unity
+    guid: a6b5bdbe44a7a8248879475ed8845581
+  - enabled: 1
+    path: Assets/Scenes/Demo2.unity
+    guid: ee51ebab9a612c44d8195dc6a7fda537
   m_configObjects: {}

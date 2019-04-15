@@ -15,7 +15,7 @@ public class StartGame : MonoBehaviour
     void Update()
     {
         if(Input.anyKey) {
-            SceneManager.LoadScene("MichaelLevel1");
+            SceneManager.LoadScene("Demo2");
         }
     }
 }
