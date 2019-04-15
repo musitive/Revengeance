@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-
+    public PlayerHealth playerHealth;
     public Image[] healthBar;
     public int maxHealth;
     private int health;
@@ -16,13 +16,14 @@ public class HealthBar : MonoBehaviour
         health = maxHealth;
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    TestHealthBarInputKeys();
-    //    HealthBounds();
-    //    DisplayHealthBars(health);
-    //}
+    // Update is called once per frame
+    void Update()
+    {
+        health = playerHealth.currentHealth;
+        TestHealthBarInputKeys();
+        HealthBounds();
+        DisplayHealthBars(health);
+    }
 
     //enforces lower and upper limits of health
     void HealthBounds()

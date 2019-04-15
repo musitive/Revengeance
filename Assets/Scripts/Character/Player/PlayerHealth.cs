@@ -4,6 +4,7 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public Score score;
     public int startingHealth = 100;                            // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
     public HealthBar healthBar;                                 // Reference to the UI's health bar.
@@ -119,13 +120,17 @@ public class PlayerHealth : MonoBehaviour
         //playerShooting.enabled = false;
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hello There!");
         if (other.gameObject.CompareTag("Heart"))
         {
             other.gameObject.SetActive(false);
             currentHealth = currentHealth >= 10 ? 10 : currentHealth + 1;
+        }
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            other.gameObject.SetActive(false);
+            Score.currentScore += 50;
         }
     }
 }

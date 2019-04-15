@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    static int currentScore = 0;
+    public static int currentScore = 0;
     public Text scoreDisplay;
     // Start is called before the first frame update
     void Start()
