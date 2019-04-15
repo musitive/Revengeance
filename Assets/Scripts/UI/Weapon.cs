@@ -52,6 +52,16 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    void incrementLevel()
+    {
+        level++;
+    }
+
+    void decrementLevel()
+    {
+        level--;
+    }
+
     //testing
     //changes level with -/+ on keypad if not pressing right ctrl
     void testNumberInputKeys()
