@@ -82,6 +82,8 @@ public class EnemyHealth : MonoBehaviour
         enemyAudio.Play ();
 
         StartSinking();
+
+        Score.gainPoints(startingHealth * 100);
     }
 
 
